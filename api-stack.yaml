@@ -4,7 +4,7 @@ services:
 
   simple1-client:
     container_name: simple1-client
-    build: ./../simple1-client
+    build: simple1-client
     restart: always
     ports:
       - "3001:3000"
@@ -14,7 +14,7 @@ services:
 
   simple2-client:
     container_name: simple2-client
-    build: ./../simple2-client
+    build: simple2-client
     restart: always
     ports:
       - "3002:3000"
@@ -23,15 +23,15 @@ services:
   #      - api2
 
   simple-api:
-    container_name: simple-api
-    build: ./../simple-api
+    container_name: api-fastapi
+    build: api-fastapi
     restart: always
     ports:
       - "80:5000"
 
   javascript-api:
     container_name: javascript-api
-    build: ./../javascript-api
+    build: javascript-api
     restart: always
     ports:
       - "5002:5000"
