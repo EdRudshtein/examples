@@ -1,0 +1,50 @@
+version: "3.9"
+
+services:
+
+  simple1-client:
+    container_name: simple1-client
+    build: ./../simple1-client
+    restart: always
+    ports:
+      - "3001:3000"
+  #    depends_on:
+  #      - mongo
+  #      - api2
+
+  simple2-client:
+    container_name: simple2-client
+    build: ./../simple2-client
+    restart: always
+    ports:
+      - "3002:3000"
+  #    depends_on:
+  #      - mongo
+  #      - api2
+
+  simple-api:
+    container_name: simple-api
+    build: ./../simple-api
+    restart: always
+    ports:
+      - "80:5000"
+
+  javascript-api:
+    container_name: javascript-api
+    build: ./../javascript-api
+    restart: always
+    ports:
+      - "5002:5000"
+    depends_on:
+      - mongo
+
+  mongo:
+    container_name: mongo
+    image: mongo
+    restart: always
+    expose:
+      - "27017"
+    ports:
+      - "27017:27017"
+    volumes:
+      - W:/Volumes/web/mongo/data/db:/data/db
